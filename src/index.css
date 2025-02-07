@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #1a1a1a;
+    --border: #e5e5e5;
+  }
+
+  :root[data-theme="dark"] {
+    --background: #1a1a1a;
+    --foreground: #ffffff;
+    --border: #333333;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --background: #1a1a1a;
+      --foreground: #ffffff;
+      --border: #333333;
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "SF Pro Text", "SF Pro", Inter, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+    letter-spacing: -0.011em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "SF Pro Display", "SF Pro", Inter, system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.021em;
+  }
+}
+
+/* Typography scale following Apple's Design System */
+.text-title-1 {
+  @apply text-[28px] leading-[32px] font-semibold tracking-[-.021em];
+  @apply md:text-[34px] md:leading-[38px];
+}
+
+.text-title-2 {
+  @apply text-[22px] leading-[26px] font-semibold tracking-[-.021em];
+  @apply md:text-[28px] md:leading-[32px];
+}
+
+.text-title-3 {
+  @apply text-[20px] leading-[24px] font-semibold tracking-[-.021em];
+  @apply md:text-[22px] md:leading-[26px];
+}
+
+.text-headline {
+  @apply text-[17px] leading-[22px] font-semibold tracking-[-.021em];
+  @apply md:text-[18px] md:leading-[24px];
+}
+
+.text-body {
+  @apply text-[17px] leading-[22px] tracking-[-.021em];
+  @apply md:text-[18px] md:leading-[24px];
+}
+
+.text-callout {
+  @apply text-[16px] leading-[21px] tracking-[-.021em];
+}
+
+.text-subheadline {
+  @apply text-[15px] leading-[20px] tracking-[-.011em];
+}
+
+.text-footnote {
+  @apply text-[13px] leading-[18px] tracking-[-.006em];
+}
+
+.text-caption {
+  @apply text-[12px] leading-[16px] tracking-[0em];
+}
+
+.prose {
+  @apply text-foreground opacity-80;
+}
+
+.prose a {
+  @apply text-foreground hover:opacity-80 no-underline transition-opacity;
+}
+
+/* Custom scrollbar for the sidebar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444444;
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
